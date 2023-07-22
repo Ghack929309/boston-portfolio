@@ -12,7 +12,7 @@ export const Project = () => {
 			<p className="text-zinc-800 text-opacity-90 text-base font-normal capitalize">
 				Projects
 			</p>
-			{dataItems?.map((item, idx: number) => {
+			{dataItems?.map((item: any, idx: number) => {
 				const { title, subTitle, image } = item.data;
 				return (
 					<div
