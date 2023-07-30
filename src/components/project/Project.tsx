@@ -9,24 +9,28 @@ export const Project = () => {
 
   return (
     <>
-      <p className="text-zinc-800 text-opacity-90 text-base font-normal capitalize">
+      <p className=" text-center text-accent text-base font-medium capitalize md:text-lg xl:text-xl">
         Projects
       </p>
-      {dataItems?.map((item: any, idx: number) => {
-        const { title, subTitle, image, show } = item.data;
-        if (show) {
-          return (
-            <div
-              key={item._id}
-              className="flex flex-col items-center justifify-center gay-y-4">
-              <Card id={idx} image={image} title={title} subTitle={subTitle} />
-            </div>
-          );
-        }
-      })}
+      <div className="px-4 flex flex-col gap-y-6 ">
+        {dataItems?.map((item: any, idx: number) => {
+          const { title, subTitle, image, show } = item.data;
+          if (show) {
+            return (
+              <div
+                key={item._id}
+                className="flex flex-col items-center justifify-center gay-y-4">
+                <Card
+                  id={idx}
+                  image={image}
+                  title={title}
+                  subTitle={subTitle}
+                />
+              </div>
+            );
+          }
+        })}
+      </div>
     </>
   );
 };
-function ContextWrapper(): { selector: any } {
-  throw new Error("Function not implemented.");
-}

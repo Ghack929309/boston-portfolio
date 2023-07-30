@@ -4,10 +4,12 @@ import React from "react";
 export const Header = () => {
   return (
     <div className="navbar flex justify-between items-center ">
-      <Link href="/" className="btn btn-ghost normal-case text-xl">
+      <Link href="/" className="btn btn-ghost text-accent normal-case text-xl">
         Boston
       </Link>
-      <button className="btn btn-primary">contact</button>
+      <button className="btn text-whtie font-normal btn-primary">
+        contact
+      </button>
     </div>
   );
 };
