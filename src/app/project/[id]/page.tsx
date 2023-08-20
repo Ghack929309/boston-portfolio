@@ -134,7 +134,7 @@ export default function ProjectKey() {
 			</div>
 		);
 	return (
-		<div className="relative flexflex-col items-center gap-y-3 justify-center min-h-screen">
+		<div className="relative flex flex-col items-center gap-y-3 justify-center min-h-screen">
 			{(data?.mobileDarkIds || data?.desktopDarkIds) && (
 				<Toggle
 					label={{ on: "dark", off: "light" }}
