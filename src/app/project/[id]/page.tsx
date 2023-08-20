@@ -134,7 +134,7 @@ export default function ProjectKey() {
 			</div>
 		);
 	return (
-		<div className="relative flex flex-col items-center gap-y-3 justify-center min-h-screen">
+		<div className="relative flex flex-col gap-y-3 min-h-screen">
 			{(data?.mobileDarkIds || data?.desktopDarkIds) && (
 				<Toggle
 					label={{ on: "dark", off: "light" }}
@@ -155,28 +155,18 @@ export default function ProjectKey() {
 			<div className="flex flex-col gap-y-2 md:gap-y-4 mt-8">
 				{showData?.map((images: string) => {
 					return data?.deskTopIds || designMode?.desktop ? (
-						<React.Fragment key={images}>
-							<div className="relative mx-auto border-gray-800 dark:border-gray-800 bg-gray-800 border-[8px] rounded-t-xl h-[172px] max-w-[301px] md:h-[294px] md:max-w-[512px]">
-								<div className="rounded-lg overflow-hidden h-[156px] md:h-[278px] bg-gray-800">
-									<div className="overflow-y-auto max-h-[278px]">
-										<Image
-											priority
-											quality={100}
-											src={images}
-											placeholder="blur"
-											blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="
-											alt="Picture of the author"
-											width={500}
-											height={500}
-											className="object-cover h-auto"
-										/>
-									</div>
-								</div>
-							</div>
-							<div className="relative mx-auto bg-primary rounded-b-xl rounded-t-sm h-[17px] max-w-[351px] md:h-[21px] md:max-w-[597px]">
-								<div className="absolute left-1/2 top-0 -translate-x-1/2 rounded-b-xl w-[56px] h-[5px] md:w-[96px] md:h-[8px] bg-gray-800"></div>
-							</div>
-						</React.Fragment>
+						<div className="self-center mb-4" key={images}>
+							<Image
+								priority
+								quality={100}
+								src={images}
+								alt="Picture of the author"
+								onLoad={() => <Skeleton height={572} width={272} />}
+								width={500}
+								height={500}
+								className="object-cover h-auto"
+							/>
+						</div>
 					) : (
 						<div
 							key={images}
@@ -192,8 +182,6 @@ export default function ProjectKey() {
 										priority
 										quality={100}
 										src={images}
-										placeholder="blur"
-										blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="
 										alt="Picture of the author"
 										width={272}
 										height={500}
