@@ -9,20 +9,14 @@ type DocViewerControlOverDisplayedDocumentProps = {
 export const DocViewerControlOverDisplayedDocument = ({
 	docs,
 }: DocViewerControlOverDisplayedDocumentProps) => {
-	const [mounted, setMounted] = useState(false);
-	useEffect(() => {
-		setMounted(true);
-	}, []);
-
+	if (!docs) return null;
 	return (
 		<div className="w-full h-full">
-			{mounted && (
-				<DocViewer
-					documents={docs}
-					pluginRenderers={DocViewerRenderers}
-					// style={{ height: 1000, width: "100%" }}
-				/>
-			)}
+			<DocViewer
+				documents={docs}
+				pluginRenderers={DocViewerRenderers}
+				// style={{ height: 1000, width: "100%" }}
+			/>
 		</div>
 	);
 };
