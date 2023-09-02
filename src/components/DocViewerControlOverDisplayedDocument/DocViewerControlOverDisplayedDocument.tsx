@@ -1,4 +1,3 @@
-"use client";
 import DocViewer, { IDocument, DocViewerRenderers } from "react-doc-viewer";
 
 import { useEffect, useState } from "react";
