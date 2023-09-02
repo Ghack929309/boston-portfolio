@@ -12,6 +12,7 @@ type CardProps = {
 };
 export default function Card({ image, title, subTitle, id }: CardProps) {
 	const imageMedia = media.getImageUrl(image);
+	console.log(imageMedia);
 	return (
 		<div
 			className="flex max-w-md md:max-w-[80%] flex-col 
@@ -26,8 +27,8 @@ export default function Card({ image, title, subTitle, id }: CardProps) {
 					priority
 					src={imageMedia.url}
 					alt={title}
-					width={imageMedia.width || 300}
-					height={imageMedia.height || 300}
+					width={300}
+					height={300}
 				/>
 			</div>
 			<div className="flex flex-col gap-y-2 max-h-32 items-center justify-center md:items-start md:px-6 md:py-4 ">
