@@ -24,7 +24,7 @@ export const PdfViewer = ({ docs }: PdfViewerType) => {
 			</p>
 		);
 	return (
-		<div className="w-full h-screen flex flex-col items-center">
+		<div className="w-full h-screen flex flex-col items-center px-2">
 			<div className="flex justify-center gap-x-4 p-2 text-black/90">
 				<button disabled={pdfIndex === 0} onClick={handlePrevClick}>
 					prev
@@ -40,7 +40,7 @@ export const PdfViewer = ({ docs }: PdfViewerType) => {
 				src={docs[pdfIndex].uri}
 				allow="autoplay"
 				allowFullScreen
-				style={{ border: "none", height: "100vh", width: "100vw" }}
+				style={{ border: "none", height: "100vh", width: "100%" }}
 			></iframe>
 		</div>
 	);
