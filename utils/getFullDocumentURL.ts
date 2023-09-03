@@ -1,5 +1,5 @@
 export function getFullDocumentURL(documents: Array<string>) {
-	return documents.map((doc) => {
+	return documents?.map((doc) => {
 		return {
 			uri:
 				doc
