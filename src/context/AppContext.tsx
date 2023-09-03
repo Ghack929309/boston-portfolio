@@ -18,16 +18,19 @@ const ContextWrapper = React.createContext({});
 
 export const useAppContext = (id?: string): useAppContextType => {
 	const [documents, setDocuments] = React.useState<DocumentUri | null>(null);
+	const isMobile = window.innerWidth < 768;
 	const { dataItems } = React.useContext(ContextWrapper) as {
 		dataItems: DataItem[];
 	};
 	useEffect(() => {
 		if (dataItems && id) {
-			const docs = dataItems[id as any]?.data?.allDocuments;
+			const data = dataItems[id as any]?.data;
+			const docs = isMobile ? data?.mobileDoc : data?.desktopDoc;
+			console.log(docs);
 			const documentUri = getFullDocumentURL(docs);
 			setDocuments(documentUri);
 		}
-	}, [dataItems, id]);
+	}, [dataItems, id, isMobile]);
 
 	return { dataItems, documents };
 };

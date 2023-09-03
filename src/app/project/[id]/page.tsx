@@ -8,5 +8,6 @@ export default function ProjectKey() {
 	const { documents } = useAppContext(id as string) as {
 		documents: DocumentUri;
 	};
+	console.log(documents);
 	return <PdfViewer docs={documents} />;
 }

@@ -12,7 +12,6 @@ type CardProps = {
 };
 export default function Card({ image, title, subTitle, id }: CardProps) {
 	const imageMedia = media.getImageUrl(image);
-	console.log(imageMedia);
 	return (
 		<div
 			className="flex max-w-md md:max-w-[80%] flex-col 
