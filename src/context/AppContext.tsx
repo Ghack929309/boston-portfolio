@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useMemo } from "react";
+import React, { use, useEffect, useMemo } from "react";
 import { useGetCollection } from "../../helpers/useGetCollection";
 import { getFullDocumentURL } from "../../utils/getFullDocumentURL";
 import { DataItem } from "@wix/data/build/cjs/src/data-v2-data-item.universal";
@@ -17,20 +17,24 @@ type useAppContextType = {
 const ContextWrapper = React.createContext({});
 
 export const useAppContext = (id?: string): useAppContextType => {
+	const [mounted, setMounted] = React.useState(false);
 	const [documents, setDocuments] = React.useState<DocumentUri | null>(null);
-	const isMobile = window?.innerWidth < 768 || true;
 	const { dataItems } = React.useContext(ContextWrapper) as {
 		dataItems: DataItem[];
 	};
 	useEffect(() => {
-		if (dataItems && id) {
+		setMounted(true);
+	}, []);
+	useEffect(() => {
+		if (dataItems && id && mounted) {
+			const isMobile = window?.innerWidth < 768 || true;
 			const data = dataItems[id as any]?.data;
 			const docs = isMobile ? data?.mobileDoc : data?.desktopDoc;
 			console.log(docs);
 			const documentUri = getFullDocumentURL(docs);
 			setDocuments(documentUri);
 		}
-	}, [dataItems, id, isMobile]);
+	}, [dataItems, id, mounted]);
 
 	return { dataItems, documents };
 };
