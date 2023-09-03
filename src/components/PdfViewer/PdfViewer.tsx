@@ -24,7 +24,7 @@ export const PdfViewer = ({ docs }: PdfViewerType) => {
 			</p>
 		);
 	return (
-		<div className="w-full h-screen flex flex-col justify-center">
+		<div className="w-full h-screen flex flex-col items-center">
 			<div className="flex justify-center gap-x-4 p-2 text-black/90">
 				<button disabled={pdfIndex === 0} onClick={handlePrevClick}>
 					prev
