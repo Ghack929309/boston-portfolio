@@ -7,13 +7,15 @@ type PdfViewerType = {
 export const PdfViewer = ({ docs }: PdfViewerType) => {
 	if (!docs) return null;
 	return (
-		<iframe
-			src={docs[0].uri}
-			width="100%"
-			height="100vh"
-			allow="autoplay"
-			allowFullScreen
-			style={{ border: "none" }}
-		></iframe>
+		<div className="w-full h-screen">
+			<iframe
+				src={docs[0].uri}
+				width="100%"
+				height="100%"
+				allow="autoplay"
+				allowFullScreen
+				style={{ border: "none" }}
+			></iframe>
+		</div>
 	);
 };
