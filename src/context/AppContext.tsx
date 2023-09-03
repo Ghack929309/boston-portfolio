@@ -18,7 +18,7 @@ const ContextWrapper = React.createContext({});
 
 export const useAppContext = (id?: string): useAppContextType => {
 	const [documents, setDocuments] = React.useState<DocumentUri | null>(null);
-	const isMobile = window.innerWidth < 768;
+	const isMobile = window?.innerWidth < 768 || true;
 	const { dataItems } = React.useContext(ContextWrapper) as {
 		dataItems: DataItem[];
 	};
