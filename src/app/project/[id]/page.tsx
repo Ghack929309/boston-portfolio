@@ -5,9 +5,8 @@ import { PdfViewer } from "@/components/PdfViewer/PdfViewer";
 
 export default function ProjectKey() {
 	const { id } = useParams();
-	const { documents } = useAppContext(id as string) as {
+	const { documents, loading } = useAppContext(id as string) as {
 		documents: DocumentUri;
-	};
-	console.log(documents);
-	return <PdfViewer docs={documents} />;
+	} & ReturnType<typeof useAppContext>;
+	return <PdfViewer docs={documents} loading={loading} />;
 }

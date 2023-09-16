@@ -4,9 +4,10 @@ import { useState } from "react";
 
 type PdfViewerType = {
 	docs: DocumentUri;
+	loading: boolean;
 };
 
-export const PdfViewer = ({ docs }: PdfViewerType) => {
+export const PdfViewer = ({ docs, loading }: PdfViewerType) => {
 	const [pdfIndex, setPdfIndex] = useState(0);
 
 	function handlePrevClick() {
@@ -16,8 +17,14 @@ export const PdfViewer = ({ docs }: PdfViewerType) => {
 	function handleNextClick() {
 		setPdfIndex((prevIndex) => Math.min(prevIndex + 1, docs.length - 1));
 	}
-
-	if (!docs)
+	if (loading) {
+		return (
+			<div className="flex justify-center items-center w-screen h-screen">
+				<p className="text-xl text-gray-400 animate-pulse ">Loading...</p>
+			</div>
+		);
+	}
+	if (docs?.length === 0 || !docs)
 		return (
 			<p className=" w-full lowercase text-center text-gray text-md italic">
 				there is no file
@@ -25,21 +32,25 @@ export const PdfViewer = ({ docs }: PdfViewerType) => {
 		);
 	return (
 		<div className="w-full h-screen flex flex-col items-center px-2">
-			<div className="flex justify-center gap-x-4 p-2 text-black/90">
-				<button disabled={pdfIndex === 0} onClick={handlePrevClick}>
-					prev
-				</button>
-				<button
-					disabled={pdfIndex === docs.length - 1}
-					onClick={handleNextClick}
-				>
-					next
-				</button>
-			</div>
+			{docs.length > 1 ? (
+				<div className="flex justify-center gap-x-4 p-2 text-black/90">
+					<button disabled={pdfIndex === 0} onClick={handlePrevClick}>
+						prev
+					</button>
+					<button
+						disabled={pdfIndex === docs.length - 1}
+						onClick={handleNextClick}
+					>
+						next
+					</button>
+				</div>
+			) : null}
+
 			<iframe
 				src={docs[pdfIndex].uri}
 				allow="autoplay"
 				allowFullScreen
+				className="flex items-center justify-center"
 				style={{ border: "none", height: "100vh", width: "100%" }}
 			></iframe>
 		</div>

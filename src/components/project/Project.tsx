@@ -17,8 +17,8 @@ export const Project = () => {
 				{!dataItems && (
 					<Skeleton
 						count={3}
-						height={300}
-						className="max-w-full flex gap-y-6"
+						height={230}
+						className="max-w-[80%] rounded-2xl flex mx-auto gap-y-6"
 					/>
 				)}
 				{dataItems?.map((item: any, idx: number) => {

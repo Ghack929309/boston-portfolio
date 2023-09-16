@@ -24,7 +24,7 @@ export default function RootLayout({
 			<body className={"bg-zinc-100 " + inter.className}>
 				<AppContext>
 					<Header />
-					{children}
+					<div className="pt-20">{children}</div>
 					<Footer />
 				</AppContext>
 			</body>

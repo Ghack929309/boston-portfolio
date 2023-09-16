@@ -1,5 +1,5 @@
 "use client";
-import React, { use, useEffect, useMemo } from "react";
+import React, { useEffect, useMemo } from "react";
 import { useGetCollection } from "../../helpers/useGetCollection";
 import { getFullDocumentURL } from "../../utils/getFullDocumentURL";
 import { DataItem } from "@wix/data/build/cjs/src/data-v2-data-item.universal";
@@ -12,6 +12,7 @@ export type DocumentUri = {
 type useAppContextType = {
 	dataItems: DataItem[];
 	documents: DocumentUri | null;
+	loading: boolean;
 };
 
 const ContextWrapper = React.createContext({});
@@ -19,24 +20,26 @@ const ContextWrapper = React.createContext({});
 export const useAppContext = (id?: string): useAppContextType => {
 	const [mounted, setMounted] = React.useState(false);
 	const [documents, setDocuments] = React.useState<DocumentUri | null>(null);
+	const [loading, setLoading] = React.useState(false);
 	const { dataItems } = React.useContext(ContextWrapper) as {
 		dataItems: DataItem[];
 	};
 	useEffect(() => {
+		setLoading(true);
 		setMounted(true);
 	}, []);
 	useEffect(() => {
 		if (dataItems && id && mounted) {
-			const isMobile = window?.innerWidth < 768 || true;
+			const isMobile = window?.innerWidth < 768;
 			const data = dataItems[id as any]?.data;
 			const docs = isMobile ? data?.mobileDoc : data?.desktopDoc;
-			console.log(docs);
 			const documentUri = getFullDocumentURL(docs);
 			setDocuments(documentUri);
+			setLoading(false);
 		}
 	}, [dataItems, id, mounted]);
 
-	return { dataItems, documents };
+	return { dataItems, documents, loading };
 };
 
 export function AppContext({ children }: { children: React.ReactNode }) {

@@ -16,9 +16,9 @@ export default function Card({ image, title, subTitle, id }: CardProps) {
 		<div
 			className="flex max-w-md md:max-w-[80%] flex-col 
 	overflow-hidden bg-white items-center justify-center md:flex-row gap-y-2 
-	md:p-0 rounded-2xl py-4 px-6"
+	md:p-0 rounded-[2.5rem] py-4 px-6"
 		>
-			<div className="max-h-[20rem] md:min-h-[10rem] sm:h-fit min-w-[20rem] bg-green-50 overflow-hidden rounded-2xl">
+			<div className="max-h-[20rem] md:min-h-[10rem] sm:h-fit min-w-[20rem] overflow-hidden rounded-2xl">
 				<Image
 					className="object-cover h-auto w-full "
 					quality={100}
