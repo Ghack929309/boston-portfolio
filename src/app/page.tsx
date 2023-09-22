@@ -12,10 +12,10 @@ export default function Home() {
 				title={portfolioData.header.title}
 				description={portfolioData.header.description}
 			/>
-			<About
+			{/* <About
 				title={portfolioData.about.title}
 				description={portfolioData.about.description}
-			/>
+			/> */}
 			<Project />
 			<SocialMedia />
 		</div>

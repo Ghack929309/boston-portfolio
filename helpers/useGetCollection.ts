@@ -29,9 +29,10 @@ export const useGetCollection = () => {
 			dataCollectionId: collectionId,
 			consistentRead: true,
 		};
-		const res = await wixItemsCollection.items.queryDataItems(options).find();
-
-		setDataItems(res?.items);
+		const res = await await wixItemsCollection.items
+			.queryDataItems(options)
+			.find();
+		setDataItems(res?.items.reverse());
 	};
 	const generateFileDownloadUrl = async (
 		fileId: string,
