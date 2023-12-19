@@ -3,24 +3,22 @@ import React from "react";
 import { ActionButtons } from "../ActionButtons/ActionButtons";
 
 export const Presentation = ({
-	name,
-	title,
-	description,
+  title,
+  description,
 }: {
-	name: string;
-	title: string;
-	description: string;
+  title: string;
+  description: string;
 }) => {
-	return (
-		<div className="flex text-accent/90 flex-col gap-y-4 items-center px-4 ">
-			<h1 className="font-semibold text-2xl capitalize">{name}</h1>
-			<h2 className="font-medium text-xl capitalize max-w-xs md:max-w-full md:tracking-wide text-center">
-				{title}
-			</h2>
-			<p className="font-normal text-base md:tracking-tight max-w-sm md:max-w-full text-center">
-				{description}
-			</p>
-			<ActionButtons className="flex lg:hidden text-white justify-between gap-x-12 mt-4" />
-		</div>
-	);
+  return (
+    <div className="flex text-accent/90 flex-col items-center px-4 ">
+      <h2 className="text-zinc-800 text-center text-base font-medium capitalize self-center  mt-6">
+        {title}
+      </h2>
+
+      <p className="text-zinc-800 text-center text-base font-medium capitalize self-center max-w-[1122px] mt-4">
+        {description}
+      </p>
+      <ActionButtons className="lg:hidden w-[70%]  sm:w-[40%] flex mx-auto items-center gap-5 mt-8 px-5" />
+    </div>
+  );
 };

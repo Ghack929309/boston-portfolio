@@ -2,50 +2,60 @@
 import Link from "next/link";
 import { media } from "@wix/api-client";
 import Image from "next/image";
-import React from "react";
+import React, { ReactNode } from "react";
 
 type CardProps = {
-	image: string;
-	title: string;
-	subTitle: string;
-	id: number;
+  image: string;
+  title: string;
+  subTitle: string;
+  id: number;
 };
 export default function Card({ image, title, subTitle, id }: CardProps) {
-	const imageMedia = media.getImageUrl(image);
-	return (
-		<div
-			className="flex max-w-md md:max-w-[80%] flex-col 
-	overflow-hidden bg-white items-center justify-center md:flex-row gap-y-2 
-	md:p-0 rounded-[2.5rem] py-4 px-6"
-		>
-			<div className="max-h-[20rem] md:min-h-[10rem] sm:h-fit min-w-[20rem] overflow-hidden rounded-2xl">
-				<Image
-					className="object-cover h-auto w-full "
-					quality={100}
-					sizes="100vw"
-					priority
-					src={imageMedia.url}
-					alt={title}
-					width={300}
-					height={300}
-				/>
-			</div>
-			<div className="flex flex-col gap-y-2 items-center justify-center max-w-[300px] md:max-w-full  md:px-6 md:py-4 ">
-				<div className=" flex h-32 lg:h-full overflow-hidden flex-col items-center text-center sm:items-start sm:text-left">
-					<p className="text-base capitalize opacity-80 font-medium text-zinc-800 ">
-						{title}
-					</p>
-					<p className="md:pr-4 text-zinc-800 text-opacity-70 overflow-hidden text-ellipsis w-full text-left text-sm font-normal">
-						{subTitle}
-					</p>
-				</div>
+  const imageMedia = media.getImageUrl(image);
+  return (
+    <Link prefetch href={`/project/${id}`} className="w-full">
+      <CardDetails title={title} subTitle={subTitle}>
+        <Image
+          className="object-cover w-full "
+          quality={100}
+          sizes="100vw"
+          priority
+          src={imageMedia.url}
+          alt={title}
+          width={470}
+          height={300}
+        />
 
-				<button className="text-indigo-500 hover:opacity-60 md:self-end text-sm font-normal capitalize">
-					<Link prefetch href={`/project/${id}`}>
-						see Project
-					</Link>
-				</button>
-			</div>
-		</div>
-	);
+        <h3 className="block md:hidden bg-opacity-40 w-full text-zinc-800 text-center text-base font-medium capitalize shadow-sm pt-2 pb-8 px-11 ">
+          {title}
+        </h3>
+      </CardDetails>
+    </Link>
+  );
 }
+
+const CardDetails = ({
+  title,
+  subTitle,
+  children,
+}: {
+  title: string;
+  subTitle: string;
+  children: ReactNode;
+}) => {
+  return (
+    <section className="relative shadow-sm bg-opacity-70  min-h-[200px] flex flex-col items-center mt-5  space-y-4 rounded-3xl">
+      <div className="z-[1] gap-0 my-auto px-px opacity-0 md:hover:opacity-100 absolute inset-0 bg-white bg-opacity-60 rounded-3xl flex items-center justify-center">
+        <div className="flex flex-col items-center justify-center px-4 space-y-2 z-[2]">
+          <h2 className="text-zinc-800 text-center text-base font-medium capitalize">
+            {title}
+          </h2>
+          <p className="text-zinc-600 text-center text-base font-base capitalize">
+            {subTitle}
+          </p>
+        </div>
+      </div>
+      {children}
+    </section>
+  );
+};

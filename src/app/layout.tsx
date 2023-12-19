@@ -5,29 +5,31 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { Header } from "@/components/Header/Header";
 import { Footer } from "@/components/footer/Footer";
+import { SocialMedia } from "../components/SocialMedia/SocialMedia";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-	title: "Clement Portfolio",
-	description:
-		"I'm Chris Clement UI Designer /UX Designer & Researcher I help users to easily interact with your projects.",
+  title: "Clement Portfolio",
+  description:
+    "I'm Chris Clement UI Designer /UX Designer & Researcher I help users to easily interact with your projects.",
 };
 
 export default function RootLayout({
-	children,
+  children,
 }: {
-	children: React.ReactNode;
+  children: React.ReactNode;
 }) {
-	return (
-		<html lang="en">
-			<body className={"bg-zinc-100 " + inter.className}>
-				<AppContext>
-					<Header />
-					<div className="pt-20">{children}</div>
-					<Footer />
-				</AppContext>
-			</body>
-		</html>
-	);
+  return (
+    <html lang="en">
+      <body className={"bg-zinc-100 py-4 " + inter.className}>
+        <AppContext>
+          <Header />
+          <div className="pt-20">{children}</div>
+          <SocialMedia />
+          <Footer />
+        </AppContext>
+      </body>
+    </html>
+  );
 }
