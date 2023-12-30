@@ -17,7 +17,7 @@ export const ActionButtons = ({ className }: ActionButtonsType) => {
       <a
         href="/christopher_Clement.pdf"
         download="christopher_Clement.pdf"
-        className="text-zinc-800 text-opacity-90 hover:text-indigo-500  text-sm capitalize grow whitespace-nowrap ">
+        className="text-zinc-800 text-opacity-90 border-[1px] rounded-lg py-2.5 px-4 border-indigo-500 hover:text-indigo-500  text-sm capitalize  whitespace-nowrap ">
         my resume
       </a>
       <button

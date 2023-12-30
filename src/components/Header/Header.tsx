@@ -5,9 +5,11 @@ import { portfolioData } from "../../../utils/constant";
 
 export const Header = () => {
   return (
-    <div className="text-zinc-800 sticky top-0 z-40 text-accent/90 flex md:justify-between  w-[90%] mx-auto text-base font-medium capitalize whitespace-nowrap shadow-lg bg-zinc-100  px-4 py-7  ">
+    <div className="text-zinc-800 sticky top-0 z-40 text-accent/90 flex md:justify-between  w-[90%] mx-auto text-base font-medium capitalize whitespace-nowrap shadow-lg shadow-indigo-500 bg-zinc-100  px-4 py-7  ">
       <Link href="/">
-        <h1>{portfolioData.header.name}</h1>
+        <h1 className="text-md md:text-lg lg:text-xl">
+          {portfolioData.header.name}
+        </h1>
       </Link>
       <ActionButtons className="hidden lg:flex flex-row-reverse text-white justify-between items-center gap-x-8 " />
     </div>

@@ -11,6 +11,7 @@ type CardProps = {
   id: number;
 };
 export default function Card({ image, title, subTitle, id }: CardProps) {
+  if (!image) return;
   const imageMedia = media.getImageUrl(image);
   return (
     <Link prefetch href={`/project/${id}`} className="w-full">
@@ -39,20 +40,24 @@ const CardDetails = ({
   subTitle,
   children,
 }: {
-  title: string;
-  subTitle: string;
+  title?: string;
+  subTitle?: string;
   children: ReactNode;
 }) => {
   return (
     <section className="relative shadow-sm bg-opacity-70  min-h-[200px] flex flex-col items-center mt-5  space-y-4 rounded-3xl">
-      <div className="z-[1] gap-0 my-auto px-px opacity-0 md:hover:opacity-100 absolute inset-0 bg-white bg-opacity-60 rounded-3xl flex items-center justify-center">
+      <div className="z-[1] gap-0 my-auto px-px opacity-0 md:hover:opacity-100 absolute inset-0 bg-white bg-opacity-95 rounded-3xl flex items-center justify-center">
         <div className="flex flex-col items-center justify-center px-4 space-y-2 z-[2]">
-          <h2 className="text-zinc-800 text-center text-base font-medium capitalize">
-            {title}
-          </h2>
-          <p className="text-zinc-600 text-center text-base font-base capitalize">
-            {subTitle}
-          </p>
+          {title && (
+            <h2 className="text-zinc-800 text-center text-base font-medium capitalize">
+              {title}
+            </h2>
+          )}
+          {subTitle && (
+            <p className="text-zinc-600 text-center text-base font-base capitalize">
+              {subTitle}
+            </p>
+          )}
         </div>
       </div>
       {children}
