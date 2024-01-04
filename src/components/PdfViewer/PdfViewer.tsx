@@ -46,7 +46,9 @@ export const PdfViewer = ({ id }: PdfViewerType) => {
           </button>
         </div>
       ) : null}
-
+      {/* <Document file={docs[pdfIndex].uri}>
+        <Page pageNumber={1} />
+      </Document> */}
       <iframe
         src={docs[pdfIndex].uri}
         allow="autoplay"

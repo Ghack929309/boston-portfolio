@@ -22,12 +22,15 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={"bg-zinc-100 py-4 " + inter.className}>
+      <body
+        className={`absolute top-0 z-[-2]  w-screen bg-white bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))] ${inter.className}`}>
         <AppContext>
           <Header />
           <div className="pt-20">{children}</div>
-          <SocialMedia />
-          <Footer />
+          <div className="bg-white">
+            <SocialMedia />
+            <Footer />
+          </div>
         </AppContext>
       </body>
     </html>

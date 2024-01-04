@@ -22,7 +22,7 @@ export const ActionButtons = ({ className }: ActionButtonsType) => {
       </a>
       <button
         onClick={openMailApp}
-        className="text-white text-sm capitalize whitespace-nowrap justify-center items-stretch bg-indigo-500 self-stretch aspect-[1.8] py-2.5 px-4 rounded-xl">
+        className="text-white text-sm capitalize whitespace-nowrap justify-center items-stretch bg-indigo-500 hover:opacity-80 self-stretch aspect-[1.8] py-2.5 px-4 rounded-xl">
         hire me
       </button>
     </div>

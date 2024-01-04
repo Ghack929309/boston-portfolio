@@ -10,7 +10,7 @@ export const Project = () => {
 
   return (
     <>
-      <div className=" bg-zinc-100 w-full grid grid-cols-1 md:grid-cols-2 gap-4 mt-5 px-4 py-3.5 ">
+      <div className=" flex flex-wrap gap-4 items-center justify-center mt-5 px-4 py-3.5 ">
         {!dataItems && (
           <Skeleton
             count={3}
@@ -22,16 +22,13 @@ export const Project = () => {
           const { title, subTitle, image, show } = item.data;
           if (show) {
             return (
-              <div
+              <Card
                 key={item._id}
-                className="flex flex-col items-center justify-center mb-4">
-                <Card
-                  id={idx}
-                  image={image}
-                  title={title}
-                  subTitle={subTitle}
-                />
-              </div>
+                id={idx}
+                image={image}
+                title={title}
+                subTitle={subTitle}
+              />
             );
           }
         })}

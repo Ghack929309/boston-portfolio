@@ -14,53 +14,24 @@ export default function Card({ image, title, subTitle, id }: CardProps) {
   if (!image) return;
   const imageMedia = media.getImageUrl(image);
   return (
-    <Link prefetch href={`/project/${id}`} className="w-full">
-      <CardDetails title={title} subTitle={subTitle}>
-        <Image
-          className="object-cover w-full "
-          quality={100}
-          sizes="100vw"
-          priority
-          src={imageMedia.url}
-          alt={title}
-          width={470}
-          height={300}
-        />
+    <Link
+      prefetch
+      href={`/project/${id}`}
+      className="flex flex-col items-center max-w-[420px] overflow-hidden rounded-[40px] hover:shadow-lg hover:shadow-indigo-300 py-2 ">
+      <Image
+        className="object-cover w-auto h-auto "
+        quality={100}
+        sizes="100vw"
+        priority
+        src={imageMedia.url}
+        alt={title}
+        width={420}
+        height={300}
+      />
 
-        <h3 className="block md:hidden bg-opacity-40 w-full text-zinc-800 text-center text-base font-medium capitalize shadow-sm pt-2 pb-8 px-11 ">
-          {title}
-        </h3>
-      </CardDetails>
+      <h3 className="max-w-xs truncate px-4 text-zinc-800 text-center text-sm font-medium capitalize pt-2 ">
+        {title}
+      </h3>
     </Link>
   );
 }
-
-const CardDetails = ({
-  title,
-  subTitle,
-  children,
-}: {
-  title?: string;
-  subTitle?: string;
-  children: ReactNode;
-}) => {
-  return (
-    <section className="relative shadow-sm bg-opacity-70  min-h-[200px] flex flex-col items-center mt-5  space-y-4 rounded-3xl">
-      <div className="z-[1] gap-0 my-auto px-px opacity-0 md:hover:opacity-100 absolute inset-0 bg-white bg-opacity-95 rounded-3xl flex items-center justify-center">
-        <div className="flex flex-col items-center justify-center px-4 space-y-2 z-[2]">
-          {title && (
-            <h2 className="text-zinc-800 text-center text-base font-medium capitalize">
-              {title}
-            </h2>
-          )}
-          {subTitle && (
-            <p className="text-zinc-600 text-center text-base font-base capitalize">
-              {subTitle}
-            </p>
-          )}
-        </div>
-      </div>
-      {children}
-    </section>
-  );
-};

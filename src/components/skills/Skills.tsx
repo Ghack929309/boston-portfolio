@@ -2,6 +2,7 @@ import React from "react";
 import {
   AILogo,
   FigmaLogo,
+  FramerLogo,
   PhotoshopLogo,
   WebflowLogo,
   WixLogo,
@@ -10,7 +11,7 @@ import {
 
 export const Skills = () => {
   return (
-    <div className="self-center flex w-full max-w-[424px] items-stretch justify-between gap-5 px-5 max-md:justify-center">
+    <div className="self-center flex w-full max-w-[424px] md:max-w-[650px] items-stretch justify-between gap-5 md:gap-x-6 px-5 max-md:justify-center">
       <div className="bg-black   p-2 rounded-xl">
         <FigmaLogo
           className="max-w-[39px] flex-1 shrink-0  "
@@ -39,6 +40,11 @@ export const Skills = () => {
         height={40}
       />
       <XDLogo
+        className="max-w-[39px] flex-1 shrink-0 "
+        width={40}
+        height={40}
+      />
+      <FramerLogo
         className="max-w-[39px] flex-1 shrink-0 "
         width={40}
         height={40}
