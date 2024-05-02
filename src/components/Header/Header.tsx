@@ -1,17 +1,61 @@
 import Link from "next/link";
 import React from "react";
-import { ActionButtons } from "../ActionButtons/ActionButtons";
-import { portfolioData } from "../../../utils/constant";
+
+import ThemeToggle from "./theme-toggle";
 
 export const Header = () => {
   return (
-    <div className="text-zinc-800 sticky top-0 z-40 text-accent/90 flex md:justify-between mt-4 rounded-lg  w-[90%] mx-auto text-base font-medium capitalize whitespace-nowrap  bg-zinc-100/40  px-4 py-7  ">
-      <Link href="/">
-        <h1 className="text-lg md:text-xl lg:text-2xl font-semibold">
-          {portfolioData.header.name}
-        </h1>
-      </Link>
-      <ActionButtons className="hidden lg:flex flex-row-reverse text-white justify-between items-center gap-x-8 " />
-    </div>
+    <header className="text-center pt-6">
+      <nav className="bg-[#6366F1]/50 p-1 rounded">
+        <div className="dark:bg-gray-900 bg-white flex px-1.5 items-center justify-between rounded-md">
+          <Logo />
+          <div className="flex items-center justify-center gap-x-4">
+            <Link href="#project">Projects</Link>
+            <Link href="#experience">Experience</Link>
+          </div>
+          <div className="mt-1">
+            <ThemeToggle />
+          </div>
+        </div>
+      </nav>
+    </header>
+  );
+};
+
+const Logo = () => {
+  return (
+    <Link href="/">
+      <svg
+        width="26"
+        height="26"
+        viewBox="0 0 26 26"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <g clip-path="url(#clip0_6_1329)">
+          <path
+            d="M25.9636 13.9749H21.3196C17.263 13.9749 13.9746 17.2633 13.9746 21.3199V25.9638C20.377 25.4891 25.4888 20.3773 25.9636 13.9749Z"
+            fill="#6366F1"
+          />
+          <path
+            d="M12.0261 25.9638V21.3199C12.0261 17.2633 8.73764 13.9749 4.6811 13.9749H0.0371094C0.511826 20.3773 5.62366 25.4891 12.0261 25.9638Z"
+            fill="#A5B4FC"
+          />
+          <path
+            d="M25.9636 12.0249C25.4888 5.62244 20.377 0.510606 13.9746 0.0358887V4.67988C13.9746 8.73641 17.263 12.0249 21.3196 12.0249H25.9636Z"
+            fill="#A5B4FC"
+          />
+          <path
+            d="M12.0261 0.0358887C5.62366 0.510606 0.511826 5.62244 0.0371094 12.0249H4.6811C8.73764 12.0249 12.0261 8.73641 12.0261 4.67988V0.0358887Z"
+            fill="#6366F1"
+          />
+        </g>
+        <defs>
+          <clipPath id="clip0_6_1329">
+            <rect width="26" height="26" fill="white" />
+          </clipPath>
+        </defs>
+      </svg>
+    </Link>
   );
 };

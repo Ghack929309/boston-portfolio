@@ -1,17 +1,15 @@
-import { Presentation } from "../components/presentation/Presentation";
-import { portfolioData } from "../../utils/constant";
+import Experience from "@/components/experiences/Experience";
+import Articles from "@/components/articles/Articles";
 import { Project } from "@/components/project/Project";
-import { Skills } from "../components/skills/Skills";
+import { About } from "@/components/about/About";
 
 export default function Home() {
   return (
     <div className="flex  flex-col min-w-full px-4 ">
-      <Skills />
-      <Presentation
-        title={portfolioData.header.title}
-        description={portfolioData.header.description}
-      />
+      <About />
       <Project />
+      <Experience />
+      {/* <Articles /> */}
     </div>
   );
 }

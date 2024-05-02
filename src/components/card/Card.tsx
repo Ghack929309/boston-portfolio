@@ -14,24 +14,15 @@ export default function Card({ image, title, subTitle, id }: CardProps) {
   if (!image) return;
   const imageMedia = media.getImageUrl(image);
   return (
-    <Link
-      prefetch
-      href={`/project/${id}`}
-      className="flex flex-col items-center w-auto overflow-hidden rounded-[40px] hover:shadow-lg hover:shadow-indigo-300 py-2 ">
+    <Link prefetch href={`/project/${id}`}>
       <Image
-        className="object-cover max-w-[320px] h-auto "
-        quality={100}
-        sizes="100vw"
-        priority
+        className="rounded-xl even:rotate-2 odd:-rotate-2 group-hover:rotate-0 transition duration-300 ease-[cubic-bezier(.5,.85,.25,1.8)] shadow-lg"
         src={imageMedia.url}
+        width={245}
+        height={160}
         alt={title}
-        width={320}
-        height={300}
+        priority
       />
-
-      <h3 className="max-w-xs px-4 text-zinc-800 text-center text-sm font-medium capitalize my-2 ">
-        {title}
-      </h3>
     </Link>
   );
 }

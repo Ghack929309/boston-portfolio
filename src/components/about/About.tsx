@@ -1,17 +1,30 @@
 "use client";
 import React from "react";
+import Image from "next/image";
+import { ActionButtons } from "../ActionButtons/ActionButtons";
 
-export const About = ({
-  title,
-  description,
-}: {
-  title: string;
-  description: string;
-}) => {
+export const About = () => {
   return (
-    <div className="text-center text-accent/90 p-4 flex flex-col gap-y-4">
-      <p className="capitalize font-medium md:font-normal text-lg">{title}</p>
-      <p className="max-w-lg mx-auto">{description}</p>
+    <div>
+      <div className="mb-10 text-center pt-6">
+        <Image
+          className="inline-flex rounded-full shadow-lg mb-4"
+          src="/images/avatar.png"
+          width={50}
+          height={50}
+          alt="Clement Christopher"
+          priority
+        />
+        <div className="mb-5">
+          <h1 className="font-inter-tight font-bold text-gray-800 dark:text-gray-100 text-2xl mb-1">
+            Clement Christopher
+          </h1>
+          <p className="text-sm text-gray-600 dark:text-gray-400">
+            UI/UX Designer focus on UX Research
+          </p>
+        </div>
+        <ActionButtons />
+      </div>
     </div>
   );
 };
