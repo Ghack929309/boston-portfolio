@@ -1,15 +1,17 @@
 "use client";
-import { DocumentUri, useAppContext } from "@/context/AppContext";
+
 import { useState } from "react";
+import { DocumentUri, useWixDocuments } from "../../../helpers/useWixDocuments";
 
 type PdfViewerType = {
   id: string;
 };
 
 export const PdfViewer = ({ id }: PdfViewerType) => {
-  const { documents: docs, loading } = useAppContext(id as string) as {
+  const { documents: docs, loading } = useWixDocuments(id as string) as {
     documents: DocumentUri;
-  } & ReturnType<typeof useAppContext>;
+    loading: boolean;
+  };
   const [pdfIndex, setPdfIndex] = useState(0);
 
   function handlePrevClick() {
@@ -21,16 +23,18 @@ export const PdfViewer = ({ id }: PdfViewerType) => {
   }
   if (loading) {
     return (
-      <div className="flex justify-center items-center w-screen h-screen">
+      <div className="flex justify-center items-center w-full h-screen">
         <p className="text-xl text-gray-400 animate-pulse ">Loading...</p>
       </div>
     );
   }
   if (docs?.length === 0 || !docs)
     return (
-      <p className=" w-full lowercase text-center text-gray text-md italic">
-        there is no file
-      </p>
+      <div className="h-screen flex items-center justify-center ">
+        <p className=" w-full lowercase text-center text-gray text-md italic">
+          there is no file
+        </p>
+      </div>
     );
   return (
     <div className="w-full h-screen flex flex-col items-center px-2">
@@ -41,20 +45,20 @@ export const PdfViewer = ({ id }: PdfViewerType) => {
           </button>
           <button
             disabled={pdfIndex === docs.length - 1}
-            onClick={handleNextClick}>
+            onClick={handleNextClick}
+          >
             next
           </button>
         </div>
       ) : null}
-      {/* <Document file={docs[pdfIndex].uri}>
-        <Page pageNumber={1} />
-      </Document> */}
+
       <iframe
         src={docs[pdfIndex].uri}
         allow="autoplay"
         allowFullScreen
         className="flex items-center justify-center"
-        style={{ border: "none", height: "100vh", width: "100%" }}></iframe>
+        style={{ border: "none", height: "100vh", width: "100%" }}
+      ></iframe>
     </div>
   );
 };
