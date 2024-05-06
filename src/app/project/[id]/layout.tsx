@@ -8,7 +8,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       <div className="w-full bg-white dark:bg-gray-900 border-x border-gray-100 dark:border-gray-800 box-content">
         <div className="px-3 md:px-16">
           <div className="flex flex-col min-h-screen">
-            <Header />
+            <Header className="max-w-[728px] mx-auto w-full" />
             <main className="grow py-12 space-y-12">
               <div className="overflow-hidden supports-[overflow:clip]:overflow-clip">
                 {children}

@@ -3,15 +3,15 @@ import React from "react";
 
 import ThemeToggle from "./theme-toggle";
 
-export const Header = () => {
+export const Header = ({ className }: { className?: string }) => {
   return (
-    <header className="text-center pt-6">
+    <header className={`text-center pt-6 ${className}`}>
       <nav className="bg-[#6366F1]/50 p-1 rounded">
         <div className="dark:bg-gray-900 bg-white flex px-1.5 items-center justify-between rounded-md">
           <Logo />
           <div className="flex items-center justify-center gap-x-4">
-            <Link href="#project">Projects</Link>
-            <Link href="#experience">Experience</Link>
+            <Link href="/#project">Projects</Link>
+            <Link href="/#experience">Experience</Link>
           </div>
           <div className="mt-1">
             <ThemeToggle />

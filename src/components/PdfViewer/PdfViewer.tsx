@@ -1,6 +1,4 @@
 "use client";
-
-import { useState } from "react";
 import { DocumentUri, useWixDocuments } from "../../../helpers/useWixDocuments";
 
 type PdfViewerType = {
@@ -12,15 +10,7 @@ export const PdfViewer = ({ id }: PdfViewerType) => {
     documents: DocumentUri;
     loading: boolean;
   };
-  const [pdfIndex, setPdfIndex] = useState(0);
 
-  function handlePrevClick() {
-    setPdfIndex((prevIndex) => Math.max(prevIndex - 1, 0));
-  }
-
-  function handleNextClick() {
-    setPdfIndex((prevIndex) => Math.min(prevIndex + 1, docs.length - 1));
-  }
   if (loading) {
     return (
       <div className="flex justify-center items-center w-full h-screen">
@@ -37,23 +27,9 @@ export const PdfViewer = ({ id }: PdfViewerType) => {
       </div>
     );
   return (
-    <div className="w-full h-screen flex flex-col items-center px-2">
-      {docs.length > 1 ? (
-        <div className="flex justify-center gap-x-4 p-2 text-black/90">
-          <button disabled={pdfIndex === 0} onClick={handlePrevClick}>
-            prev
-          </button>
-          <button
-            disabled={pdfIndex === docs.length - 1}
-            onClick={handleNextClick}
-          >
-            next
-          </button>
-        </div>
-      ) : null}
-
+    <div className="w-full h-screen flex flex-col items-center -mt-8">
       <iframe
-        src={docs[pdfIndex].uri}
+        src={docs[0].uri}
         allow="autoplay"
         allowFullScreen
         className="flex items-center justify-center"

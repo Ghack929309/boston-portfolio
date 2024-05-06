@@ -16,7 +16,7 @@ export default function Card({ image, title, subTitle, id }: CardProps) {
   return (
     <Link prefetch href={`/project/${id}`}>
       <Image
-        className={`rounded-xl group-hover:rotate-0 transition duration-300 ease-[cubic-bezier(.5,.85,.25,1.8)] shadow-lg ${
+        className={`rounded-xl group-hover:rotate-0 transition duration-300 ease-[cubic-bezier(.5,.85,.25,1.8)] ${
           id % 2 === 0 ? "rotate-2" : "-rotate-2"
         } `}
         src={imageMedia.url}
