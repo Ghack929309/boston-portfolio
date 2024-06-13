@@ -9,7 +9,7 @@ export const About = () => {
       <div className="mb-10 text-center pt-6">
         <Image
           className="inline-flex rounded-full shadow-lg mb-4"
-          src="/images/avatar.png"
+          src="/images/boston.png"
           width={50}
           height={50}
           alt="Clement Christopher"
